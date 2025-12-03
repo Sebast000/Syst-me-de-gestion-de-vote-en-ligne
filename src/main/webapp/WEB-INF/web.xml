@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee" version="5.0">
+
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.vote.servlets.LoginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.vote.servlets.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.vote.servlets.LogoutServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>ElectionServlet</servlet-name>
+        <servlet-class>com.vote.servlets.ElectionServlet</servlet-class> 
+    </servlet>
+    <servlet>
+        <servlet-name>CandidatServlet</servlet-name>
+        <servlet-class>com.vote.servlets.CandidatServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>VoteServlet</servlet-name>
+        <servlet-class>com.vote.servlets.VoteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ResultServlet</servlet-name>
+        <servlet-class>com.vote.servlets.ResultServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/loginServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/registerServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logoutServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>ElectionServlet</servlet-name>
+        <url-pattern>/addElectionServlet</url-pattern> 
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>CandidatServlet</servlet-name>
+        <url-pattern>/addCandidateServlet</url-pattern> 
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>VoteServlet</servlet-name>
+        <url-pattern>/voteServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ResultServlet</servlet-name>
+        <url-pattern>/results</url-pattern> 
+    </servlet-mapping>
+</web-app>
