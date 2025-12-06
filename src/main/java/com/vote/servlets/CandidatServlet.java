@@ -56,12 +56,13 @@ public class CandidatServlet extends HttpServlet {
             boolean success = candidateDAO.addCandidate(candidate);
 
             if (success) {
-                // ***** CORRECTION CLÉ : Utilisation de FORWARD pour afficher le message sur admin_dashboard.jsp *****
+                
+            	
                 request.setAttribute("success", "Le candidat '" + nom + "' a été ajouté avec succès.");
                 request.getRequestDispatcher("admin_dashboard.jsp").forward(request, response); 
-                // *************************************************************************************************
+           
             } else {
-                // Ce cas est rare si le DAO est bien implémenté, mais gère l'échec d'insertion sans exception
+               
                 request.setAttribute("error", "Erreur lors de l'ajout du candidat. Veuillez réessayer.");
                 request.getRequestDispatcher("addCandidate.jsp").forward(request, response);
             }
@@ -70,7 +71,8 @@ public class CandidatServlet extends HttpServlet {
             request.setAttribute("error", "ID d'élection invalide.");
             request.getRequestDispatcher("addCandidate.jsp").forward(request, response);
         } catch (SQLException e) {
-            // Gestion des erreurs SQL (ex: ID d'élection non existant)
+
+
             System.err.println("SQL Error: " + e.getMessage());
             request.setAttribute("error", "Erreur de base de données : L'élection spécifiée est peut-être invalide ou déjà fermée.");
             request.getRequestDispatcher("addCandidate.jsp").forward(request, response);

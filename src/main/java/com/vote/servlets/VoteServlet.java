@@ -36,7 +36,8 @@ public class VoteServlet extends HttpServlet {
         try {
              userId = (Integer) userIdObj; 
         } catch (ClassCastException | NullPointerException e) {
-            // Si userId n'est pas un Integer ou est null (bien que le test initial soit là)
+
+
             response.sendRedirect("login.jsp"); 
             return;
         }
@@ -53,23 +54,26 @@ public class VoteServlet extends HttpServlet {
         
         try {
             int idCandidat = Integer.parseInt(idCandidatParam);
-            // int idElection = Integer.parseInt(idElectionParam); // Non utilisé ici mais important pour la vérification JSP
+
+
             
-            // 3. Appel du DAO pour l'enregistrement du vote
-            // L'ID de l'élection est récupéré par le DAO via l'ID du candidat
+         
             boolean success = voteDAO.recordVote(userId, idCandidat); 
 
             if (success) {
-                // ********* CORRECTION CLÉ ICI : Utilisation de FORWARD et de l'attribut de REQUÊTE *********
+
+
                 request.setAttribute("voteSuccess", "Votre vote a été enregistré avec succès !");
                 
-                // Le RequestDispatcher exécute dashboard.jsp sans nouvelle requête HTTP,
-                // garantissant que l'attribut est disponible.
+
+
                 request.getRequestDispatcher("dashboard.jsp").forward(request, response);
                 return;
-                // *****************************************************************************************
+
+
             } else {
-                // Échec si DAO.recordVote retourne false (devrait être rare)
+
+
                 request.setAttribute("error", "Erreur lors de l'enregistrement du vote. Veuillez réessayer.");
                 request.getRequestDispatcher("vote.jsp").forward(request, response);
                 return;
@@ -81,7 +85,8 @@ public class VoteServlet extends HttpServlet {
             return;
         } catch (SQLException e) {
             System.err.println("SQL Error: " + e.getMessage());
-            // Gestion des erreurs de base de données (ex: violation de contrainte UNIQUE = double vote)
+
+
             String errorMessage = "Erreur de base de données. Vous avez peut-être déjà voté pour cette élection.";
             if (e.getMessage() != null && (e.getMessage().contains("Duplicate entry") || e.getMessage().contains("UNIQUE constraint failed"))) {
                 errorMessage = "Vous avez déjà soumis un vote pour cette élection.";
@@ -95,7 +100,8 @@ public class VoteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
-        // Rediriger les requêtes GET vers la page de vote
+
+
         response.sendRedirect("vote.jsp"); 
     }
 }

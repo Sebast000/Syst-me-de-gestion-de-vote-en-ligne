@@ -61,10 +61,12 @@ public class ElectionServlet extends HttpServlet {
             boolean success = electionDAO.addElection(election);
 
             if (success) {
-                // ***** CORRECTION CLÉ : Utilisation de FORWARD pour afficher le message *****
+           
+            	
                 request.setAttribute("success", "L'élection '" + titre + "' a été ajoutée avec succès !");
                 request.getRequestDispatcher("admin_dashboard.jsp").forward(request, response);
-                // *************************************************************************
+
+
             } else {
                 request.setAttribute("error", "Erreur lors de l'ajout de l'élection. Réessayez.");
                 request.getRequestDispatcher("addElection.jsp").forward(request, response);
